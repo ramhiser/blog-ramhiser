@@ -8,9 +8,6 @@ googleAnalytics = "UA-33406921-1"
 # Disable comments by leaving disqusShortname empty
 disqusShortname = "ramhiser"
 
-# For GitHub Pages. See: https://gohugo.io/hosting-and-deployment/hosting-on-github/
-publishDir = "docs"
-
 [params]
 	name = "John Ramey"
 	description = "I science data with machines."
