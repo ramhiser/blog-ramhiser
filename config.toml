@@ -18,18 +18,9 @@ disqusShortname = "ramhiser"
 
   enableRobotsTXT = true
 
-	# Navigation links
-	home = ""
-	subscribe = ""
-	# Pagination links
-	olderPosts = ""
-	newerPosts = ""
-	readMore = ""
-	copyright = ""
 	# Sharing options and author information in posts
 	aboutAuthor = "I science data with machines."
-	tweet = ""
-	share = ""
+
 	# 404 page
 	title404 = ""
 	subtitle404 = ""
