@@ -12,4 +12,8 @@ comments: false
 * [Baylor football](https://twitter.com/BUFootball) fan. Sic ‘em, Bears!
 * Soccer referee for over 20 years.
 
+## Some Links
+
+* [Publications](https://scholar.google.com/citations?user=1g4uXl8AAAAJ&hl=en)
+
 ![John Ramey](https://avatars3.githubusercontent.com/u/261183)
