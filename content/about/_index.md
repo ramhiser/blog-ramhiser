@@ -7,6 +7,7 @@ comments: false
 * Principal Data Scientist at [Novi Labs](http://novilabs.com/).
 * Data is my life. (data are?)
 * Write lots of Python and R code.
+* I organize the [Austin Deep Learning meetup](https://www.meetup.com/Austin-Deep-Learning/) with [Pierce Spitler](https://twitter.com/pspitler3).
 * Passionate about exercise and nutrition.
 * Die hard [Tottenham Hotspur](https://twitter.com/SpursOfficial) supporter.
 * [Baylor football](https://twitter.com/BUFootball) fan. Sic ‘em, Bears!
