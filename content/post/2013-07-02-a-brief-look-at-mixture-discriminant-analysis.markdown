@@ -23,7 +23,6 @@ As far as I am aware, there are two main approaches (there are lots and lots of
 variants!) to applying finite mixture models to classfication:
 
 1. The [Fraley and Raftery approach](http://www.stat.washington.edu/raftery/Research/PDF/fraley2002.pdf) via [the mclust R package](http://cran.r-project.org/web/packages/mclust/index.html)
-
 2. The [Hastie and Tibshirani approach](http://www.jstor.org/stable/2346171) via [the mda R package](http://cran.r-project.org/web/packages/mda/index.html)
 
 Although the methods are similar, I opted for exploring the latter method. Here

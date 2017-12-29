@@ -57,17 +57,11 @@ post](http://stackoverflow.com/a/19850962/234233) to attempt a fix. As mentioned
 below, I still received an error. Here were my initial steps:
   
 1. Download and install XCode Command Line Tools from [Apple](https://developer.apple.com)
-
 2. Installing `scipy` still failed at this point
-
 3. `sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer/`
-
 4. `brew update`
-
 5. `brew doctor`
-
 6. `pip install -U scipy` still failed with same error message.
-
 7. A few hints from a random [README
 file](https://github.com/robotastic/homebrew-hackrf#troubleshooting) suggested
 that I do the following:
