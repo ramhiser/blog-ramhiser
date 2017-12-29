@@ -1,5 +1,5 @@
 # Site settings
-baseurl = "https://ramhiser.com"
+baseurl = "http://ramhiser.com"
 languageCode = "en-us"
 title = "John Ramey's Blog"
 theme = "hugo-cactus-theme"
