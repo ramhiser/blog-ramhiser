@@ -8,7 +8,7 @@ categories:
 comments: true
 ---
 
-After one too many Liquid errors and all the Ruby dependency hell, I'm moving away from [Jekyll](https://jekyllrb.com/) to [Hugo](https://gohugo.io/). One less excuse to post more.
+After one too many Liquid errors and all the Ruby dependency hell, I'm moving away from [Jekyll](https://jekyllrb.com/) to [Hugo](https://gohugo.io/). One less excuse to keep me from posting.
 
 A handful of things to note about Hugo:
 
