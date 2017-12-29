@@ -43,14 +43,14 @@ Notice that the last line that I add to my `~/.bashrc` file is to load `R-devel`
 
 Next, I install the R packages that I use the most.
 
-{{< highlight r >}}
+{{< highlight bash >}}
 install.packages(c('devtools', 'ProjectTemplate', 'knitr', 'ggplot2', 'reshape2',
                    'plyr', 'Rcpp', 'mvtnorm', 'caret'), dep = TRUE)
 {{< / highlight >}}
 
 Here is my `.Rprofile` file:
 
-{{< highlight r >}}
+{{< highlight bash >}}
 .First <- function() {
   options(
     repos = c(CRAN = "http://cran.fhcrc.org/"),
@@ -75,7 +75,7 @@ Finally, my [coworkers](http://rglab.org) focus on [flow cytometry](http://en.wi
 maintains several [Bioconductor](http://www.bioconductor.org/) packages related to this type of data. To install the majority of
 them, we simply install the [flowWorkspace](http://www.bioconductor.org/packages/2.10/bioc/html/flowWorkspace.html) package in R:
 
-{{< highlight r >}}
+{{< highlight bash >}}
 source("http://bioconductor.org/biocLite.R")
 biocLite("flowWorkspace")
 {{< / highlight >}}

@@ -23,7 +23,7 @@ To overcome the first challenge, I split the total number of bits into separate 
 Below, I have plotted 500 x 500 bitmaps based on the _random_ bits from both of [R](http://www.r-project.org/) and [random.org](http://www.random.org/). As far as I can tell, no apparent patterns are visible in either plot, but from the graphics alone, our conclusions are limited to ruling out obvious systematic patterns, which were exhibited from the [PHP](http://www.php.net/) code. I am unsure if the [PHP](http://www.php.net/) folks formally tested their [RNG](http://en.wikipedia.org/wiki/Random_number_generation) algorithms for __randomness__, but even if they did, the code in both [R](http://www.r-project.org/) and [PHP](http://www.php.net/) is straightforward and provides a quick eyeball test. Armed with similar plots alone, the [PHP](http://www.php.net/) devs could have sought for better [RNG](http://en.wikipedia.org/wiki/Random_number_generation) algorithms — perhaps, borrowed those from [R](http://www.r-project.org/).
 
 
-{{< highlight r >}}
+{{< highlight bash >}}
 library("plyr")
 library("pixmap")
 library("random")
@@ -70,7 +70,7 @@ with(bit_mats, plot(pixmapGrey(data = R, nrow = nrow(R), ncol = ncol(R)), main =
 
 ![plot of chunk code](http://i.imgur.com/hZd2N.png) 
 
-{{< highlight r >}}
+{{< highlight bash >}}
 with(bit_mats, plot(pixmapGrey(data = random.org, nrow = nrow(random.org), 
     ncol = ncol(random.org)), main = "random.org"))
 {{< / highlight >}}

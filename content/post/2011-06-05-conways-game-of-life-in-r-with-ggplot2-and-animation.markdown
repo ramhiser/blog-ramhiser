@@ -22,7 +22,7 @@ The set of grids is stored as a list, where each element is a matrix of zeros an
 Let me know if you improve on my code any. I'm always interested in learning how to do things better.
 
 
-{{< highlight r >}}
+{{< highlight bash >}}
 library('foreach')
 library('ggplot2')
 library('animation')
@@ -88,7 +88,7 @@ As an example, I have created a 50-by-50 grid with a 10% chance that its initial
 that the default frame rate, which is controlled by __interval__, is 1 second. I set it to 0.05
 based to give a decent video.
 
-{{< highlight r >}}
+{{< highlight bash >}}
 set.seed(42)
 game_grids <- game_of_life(size = 50, num_reps = 500, prob = c(0.1, 0.9))
 grid_ggplot <- lapply(game_grids, grid_to_ggplot)

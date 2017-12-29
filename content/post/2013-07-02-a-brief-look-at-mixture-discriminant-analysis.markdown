@@ -74,7 +74,7 @@ dimension increases relative to the sample size.
 
 ![MDA Decision Boundaries](http://i.imgur.com/lw0iBxe.png)
 
-{{< highlight r >}}
+{{< highlight bash >}}
 library(MASS)
 library(mvtnorm)
 library(mda)

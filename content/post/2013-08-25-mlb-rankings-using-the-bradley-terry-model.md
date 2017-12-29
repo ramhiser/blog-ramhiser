@@ -131,7 +131,7 @@ organize the analysis and to minimize boiler-plate code.
 After scraping the matchup records from ESPN, the following R code prettifies
 the data and then fits the BT model to both data sets.
 
-{{< highlight r >}}
+{{< highlight bash >}}
 # Cleans the American League (AL) and National League (NL) data scraped from
 # ESPN's MLB Grid
 AL_cleaned <- clean_ESPN_grid_data(AL.standings, league = "AL")
@@ -158,7 +158,7 @@ confusing situation, we set these probabilities to 0. The point is that these
 events can never happen unless you play for Houston or have A-Rod on your team.
 
 
-{{< highlight r >}}
+{{< highlight bash >}}
 AL_probs <- outer(AL_abilities, AL_abilities, prob_BT)
 diag(AL_probs) <- 0
 AL_probs <- melt(AL_probs)
@@ -183,7 +183,7 @@ estimates. Let's first look at the estimates.
 
 
 
-{{< highlight r >}}
+{{< highlight bash >}}
 ## |     | ability | s.e.  |
 ## |-----+---------+-------|
 ## | ARI | 0.000   | 0.000 |
@@ -258,7 +258,7 @@ Here, we repeat the same analysis for the National League.
 
 
 
-{{< highlight r >}}
+{{< highlight bash >}}
 ## |     | ability | s.e.  |
 ## |-----+---------+-------|
 ## | ARI | 0.000   | 0.000 |
@@ -305,7 +305,7 @@ average team.
 
 
 
-{{< highlight r >}}
+{{< highlight bash >}}
 ATL_probs <- subset(NL_probs, Team == "ATL" & Opponent != "ATL")
 prob_ATL_SF <- subset(ATL_probs, Opponent == "SF")$Probability
 series_probs <- data.frame(Wins = 0:3, Probability = dbinom(0:3, 3, prob_ATL_SF))
@@ -313,7 +313,7 @@ print(ascii(series_probs, include.rownames = FALSE, digits = 3), type = "org")
 {{< / highlight >}}
 
 
-{{< highlight r >}}
+{{< highlight bash >}}
 ## | Wins  | Probability |
 ## |-------+-------------|
 ## | 0.000 | 0.048       |
@@ -348,11 +348,7 @@ separately for the current season, but similar data are also available on ESPN
 going back to 2002. With this in mind, obvious extensions are:
 
 * Rank the leagues together after scraping the [interleague play](http://en.wikipedia.org/wiki/Interleague_play) matchups.
-
 * Examine how ranks change over time.
-
 * Include previous matchup records as prior information for later seasons.
-
 * Predict future games. Standard errors should not be ignored here.
-
 * Add covariates (e.g., home-field advantage) to the BT model.

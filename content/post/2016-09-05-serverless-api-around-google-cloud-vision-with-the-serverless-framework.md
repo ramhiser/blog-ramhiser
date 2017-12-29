@@ -171,7 +171,7 @@ After the Serverless command returns successfully, it'll provide a few useful
 pieces of information, including the API endpoint you'll need to use your
 microservice:
 
-{{< highlight yaml >}}
+{{< highlight bash >}}
 Service Information
 service: cloudvision
 stage: dev
