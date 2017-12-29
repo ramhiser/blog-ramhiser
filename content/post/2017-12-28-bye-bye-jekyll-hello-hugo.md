@@ -1,7 +1,11 @@
 ---
 title: "Bye Bye, Jekyll. Hello, Hugo."
 date: 2017-12-28T20:54:29-06:00
-draft: true
+categories:
+- Hugo
+- Jekyll
+- Go
+comments: true
 ---
 
 After one too many Liquid errors and all the Ruby dependency hell, I'm moving away from [Jekyll](https://jekyllrb.com/) to [Hugo](https://gohugo.io/). One less excuse to post more.
