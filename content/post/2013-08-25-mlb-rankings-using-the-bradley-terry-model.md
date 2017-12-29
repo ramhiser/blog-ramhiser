@@ -98,19 +98,19 @@ a simple approach to modeling pairwise competitions, such as sporting events,
 that do not result in ties and is well-suited to the ESPN data above where we
 know only the win-loss records between any two teams. (If curious, [ties can be handled with modifications](http://www.jstor.org/discover/10.2307/2283595).)
 
-Suppose that teams $$i$$ and $$j$$ play each other, and we wish to know the
-probability $$p_{ij}$$ that team $$i$$ will beat team $$j$$. Then, with the BT
+Suppose that teams `i` and `j` play each other, and we wish to know the
+probability $$p_{ij}$$ that team `i` will beat team `j`. Then, with the BT
 model we define
 
 $$
 \text{logit}(p_{ij}) = \lambda_i - \lambda_j,
 $$
 
-where $$\lambda_i$$ and $$\lambda_j$$ denote the abilities of teams $$i$$ and
-$$j$$, respectively. Besides calculating the probability of one team beating
+where $$\lambda_i \text{ and } \lambda_j$$ denote the abilities of teams `i` and
+`j`, respectively. Besides calculating the probability of one team beating
 another, the team abilities provide a natural mechanism for ranking teams. That
-is, if $$\lambda_i > \lambda_j$$, we say that team $$i$$ is ranked superior to
-team $$j$$, providing an ordering on the teams within a league.
+is, if $$\lambda_i > \lambda_j,$$ we say that team `i` is ranked superior to
+team `j`, providing an ordering on the teams within a league.
 
 Perhaps naively, we assume that all games are independent. This assumption makes
 it straightforward to write the likelihood, which is essentially the product of

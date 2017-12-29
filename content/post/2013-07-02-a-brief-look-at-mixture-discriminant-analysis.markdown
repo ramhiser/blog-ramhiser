@@ -26,7 +26,7 @@ variants!) to applying finite mixture models to classfication:
 2. The [Hastie and Tibshirani approach](http://www.jstor.org/stable/2346171) via [the mda R package](http://cran.r-project.org/web/packages/mda/index.html)
 
 Although the methods are similar, I opted for exploring the latter method. Here
-is the general idea. There are $$K \ge 2$$ classes, and each class is assumed to
+is the general idea. There are `K` classes (at least 2), and each class is assumed to
 be a Gaussian mixuture of subclasses. Hence, the model formulation is generative,
 and the posterior probability of class membership is used to classify an
 unlabeled observation. Each subclass is assumed to have its own mean vector, but
