@@ -14,13 +14,13 @@ I am a big fan of [scikit-learn](http://scikit-learn.org/)'s [pipelines](http://
 * Export models to JSON for production models
 * Enforce structure in preprocessing and hyperparameter search to avoid over-optimistic error estimates
 
-Unfortunately though, there are a number of sklearn modules not well integrated with pipelines. In particular, **feature selection**. No doubt you've encountered:
+Unfortunately though, there are a number of `sklearn` modules not well integrated with pipelines. In particular, **feature selection**. No doubt you've encountered:
 
 ```
 RuntimeError: The classifier does not expose "coef_" or "feature_importances_" attributes
 ```
 
-After a lot of digging, I managed to apply (cross-validated) feature selection to a `Pipeline`.
+After a lot of digging, I managed to make feature selection work with a small extension to the `Pipeline` class.
 
 Before we get started, some details about my setup:
 
@@ -92,22 +92,22 @@ feature_selector_cv.fit(X, y)
 
 BOOM! What happened? The `Pipeline` object itself does not contain the standard attributes `coef_` or `feature_importances_`. So what do we do?
 
-To address the probelm, we extend the `Pipeline` class and create a new `PipeRFE`. When the `RFECV` object is fit, the `feature_importances_` attribute is extracted from the `ExtraTreesRegressor` and assigned to the `PipeRFE` object.
+To address the problem, we extend the `Pipeline` class and create a new `PipelineRFE`. When the `RFECV` object is fit, the `feature_importances_` attribute is extracted from the `ExtraTreesRegressor` and assigned to the `PipelineRFE` object.
 
 ```python
-class PipeRFE(Pipeline):
+class PipelineRFE(Pipeline):
 
     def fit(self, X, y=None, **fit_params):
-        super(PipeRFE, self).fit(X, y, **fit_params)
+        super(PipelineRFE, self).fit(X, y, **fit_params)
         self.feature_importances_ = self.steps[-1][-1].feature_importances_
         return self
 ```
 
-So now, let's rerun the same code as above, but this time we'll create a `PipeRFE` object.
+So now, let's rerun the same code as above, but this time we'll create a `PipelineRFE` object.
 
 
 ```python
-pipe = PipeRFE(
+pipe = PipelineRFE(
     [
         ('std_scaler', preprocessing.StandardScaler()),
         ("ET", ExtraTreesRegressor(random_state=42, n_estimators=250))
@@ -188,14 +188,14 @@ import seaborn as sns
 sns.set_style("darkgrid")
 
 
-class PipeRFE(Pipeline):
+class PipelineRFE(Pipeline):
 
     def fit(self, X, y=None, **fit_params):
-        super(PipeRFE, self).fit(X, y, **fit_params)
+        super(PipelineRFE, self).fit(X, y, **fit_params)
         self.feature_importances_ = self.steps[-1][-1].feature_importances_
         return self
 
-pipe = PipeRFE(
+pipe = PipelineRFE(
     [
         ('std_scaler', preprocessing.StandardScaler()),
         ("ET", ExtraTreesRegressor(random_state=42, n_estimators=250))
