@@ -28,6 +28,11 @@
 {{ template "_internal/schema.html" . }}
 {{ template "_internal/twitter_cards.html" . }}
 
+<!-- custom CSS -->
+{{ range .Site.Params.custom_css -}}
+    <link rel="stylesheet" href="{{ . | absURL }}">
+{{ end }}
+
 <!-- adsense -->
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>

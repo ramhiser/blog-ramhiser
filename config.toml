@@ -31,6 +31,8 @@ disqusShortname = "ramhiser"
   # The social icons can be styled differently if you use mono as font - circle, rounded, or empty
   socialIconStyle = "circle"
 
+  custom_css = ["css/custom.css"]
+
 # Add additional social link entries underneath
 [social]
     twitter  = "https://www.twitter.com/ramhiser"

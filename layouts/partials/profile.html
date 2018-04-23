@@ -1,0 +1,17 @@
+<div class="profile">
+    <section id="wrapper">
+        <header id="header">
+            <a href="{{ "about" | absURL }}">
+                <img id="avatar" class="2x" src="{{ "images/avatar.png" | absURL }}"/>
+            </a>
+            <h1>{{ .Site.Params.name }}</h1>
+            <h2>{{ .Site.Params.bio | markdownify }}</h2>
+            <div class="subscribe">
+              <form name="email_signup" method="POST" netlify>
+                <input type="text" id="femail" name="email" placeholder="Enter your email to receive updates">
+                <input type="submit" value="Subscribe">
+              </form>
+            </div>
+        </header>
+    </section>
+</div>
