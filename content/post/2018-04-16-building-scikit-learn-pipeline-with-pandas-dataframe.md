@@ -78,9 +78,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=1/3., random
 
 # Column Selector
 
-If you've ever loaded a massive Excel spreadsheet into pandas, you know how difficult it can be to traverse someone else's disorganized quant vomit. You end up seeing columns with names like `earnings_forecast_js`. How the hell were you supposed to know `_js` was shorthand for John Smith's earnings forecast?
-
-Generally speaking, large Excel spreadsheets, CSV files, and other tabular data sets contain a large number of columns. Often, only some of those columns are useful. That's why we need a column selector. A column selector enables us to:
+Generally speaking, large Excel spreadsheets, CSV files, and other tabular data sets contain a large number of columns. Often, only some of those columns are useful. That's why we need a column selector so that we can:
 
 * Ignore unimportant features from someone else's spreadsheet
 * Use columns chosen by a feature-selection method
@@ -88,7 +86,7 @@ Generally speaking, large Excel spreadsheets, CSV files, and other tabular data 
 * Skip features with target leak
 * Test a model's performance using a subset of important features identified by an expert
 
-While we're still talking column selection, you might ask whether we couldn't just use pandas to filter out the column. Most certainly, you can, but often in a `Pipeline`, you want to ensure your data set contains only those features you have specified manually, from a ETL microservice, etc. This is especially true in production ML systems, where, for example, an unwanted column can lead to exceptions being thrown.
+While we're still talking column selection, you might ask whether we couldn't just use pandas to filter out the column. Most certainly, you can, but often in a `Pipeline`, you want to ensure your data set contains only those features you have specified manually, from a ETL microservice, etc. This is especially true in production ML systems, where, for example, an unwanted column can lead to exceptions being thrown when a user requests a prediction.
 
 Returning to the `churn` data set, we see a `phone number` feature. While the last 4 digits of a phone number may contain some information, we'll consider it a nonessential feature for our purposes. To demonstrate the `ColumnSelector`, let's select a handful of relevant columns.
 
@@ -132,9 +130,9 @@ One of my favorite components of a scikit-learn `Pipeline` is the [FeatureUnion]
 
 To be honest, I just didn't see the `FeatureUnion`'s potential at first. But once I realized that a `FeatureUnion` allows us to process sets of features in parallel, my mind was blown.
 
-What we're going to do is combine a `FeatureUnion` and a `TypeSelector` to apply transformations to the pandas columns based on their data type. To numerical features, we can center and scale them before imputing missing values. To categorical features, we can [encode them](http://scikit-learn.org/stable/modules/preprocessing.html#encoding-categorical-features) with a `OneHotEncoder` or similar before applying categorical-specific transformations. If we wish to handle other data types in specific ways, such as binary features or `datetime`, the `TypeSelector` will allow us to do that. If you want to see the data types of each column in a `DataFrame`, check out [`df.select_dtypes()`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.select_dtypes.html).
+What we're going to do is combine a `FeatureUnion` and a `TypeSelector` to apply transformations to the pandas columns based on their data type. To numerical features, we can imputing missing values before centering and scaling the features. To categorical features, we can [encode them](http://scikit-learn.org/stable/modules/preprocessing.html#encoding-categorical-features) with a `OneHotEncoder` or similar before applying categorical-specific transformations. If we wish to handle other data types in specific ways, such as binary features or `datetime`, the `TypeSelector` will allow us to do that. If you want to see the data types of each column in a `DataFrame`, check out [`df.select_dtypes()`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.select_dtypes.html).
 
-As you can see, the implementation of the `TypeSelector` (based on [this gist](https://gist.github.com/StevenReitsma/b6e067ef1784ffae4d97f395f5f9d889#file-blogpost-pandas3-py) is pretty simple.
+As you can see, the implementation of the `TypeSelector` (based on [this gist](https://gist.github.com/StevenReitsma/b6e067ef1784ffae4d97f395f5f9d889#file-blogpost-pandas3-py)) is pretty simple.
 
 
 ```python
@@ -213,16 +211,15 @@ X_test_transformed
 
     <1667x71 sparse matrix of type '<class 'numpy.float64'>'
     	with 28955 stored elements in Compressed Sparse Row format>
-
 ```
 
 Notice that the test data set is now a sparse matrix with 1,667 rows and 71 columns. That means, the test data set is ready for classification by a scikit-learn classifier. In case you're curious, the large increase in columns from 19 to 71 columns is the result of the `OneHotEncoder` we applied to the categorical features.
 
 # Preprocessing Pipeline + Classifier + Grid Search
 
-You'll notice that the transformation pipeline above is quite general. Most Pipelines, whether they be classification or regression problems, require applying operations to numeric, categorical, and boolean features.
+You'll notice that the transformation pipeline above is quite general. Most `Pipelines`, whether they be classification or regression problems, require applying operations to numeric, categorical, and boolean features. So we can use this preprocessing pipeline pattern again and again.
 
-Here's the best part though. Combine the preprocessing pipeline with a classifier to classify `churn` is so easy.
+Here's the best part though. Combining the preprocessing pipeline with a classifier to classify `churn` is so easy.
 
 
 ```python
@@ -232,7 +229,7 @@ classifier_pipeline = make_pipeline(
 )
 ```
 
-The classifier pipeline uses a [support vector machine](http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html) with a [radial basis function](https://en.wikipedia.org/wiki/Radial_basis_function_kernel) as its kernel. Currently, the pipeline applies the default hyperparameters. Instead of the defaults, let's search for the optimal `gamma` hyperparameter via 10-fold crossvalidation and [GridSearchCV](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html). As a side note, one nice byproduct of our `Pipeline` is that the imputation and scaling is applied during each cross-validation fold. In doing so, we've avoided subtle overfitting that occurs if you're not careful.
+The classifier pipeline uses a [support vector machine](http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html) with a [radial basis function](https://en.wikipedia.org/wiki/Radial_basis_function_kernel) as its kernel. Currently, the pipeline applies the default hyperparameters. Instead of the defaults, let's search for the optimal `gamma` hyperparameter via 10-fold crossvalidation and [GridSearchCV](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html). As a side note, one nice byproduct of our `Pipeline` is that the imputation and scaling is applied during each cross-validation fold. In doing so, we've avoided subtle overfitting that can occur if we're not careful.
 
 To specify the hyperparameter grid, we use a dictionary. The keys indicate the hyperparameter to optimize, and the values give the candidate values. The key uses a `__` (two underscores) to delineate the classifier and the hyperparameter. If you're unfamiliar, you can chain multiple sets of `__` together in more complex pipelines: see [the Pipeline docs](http://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline) for details.
 
