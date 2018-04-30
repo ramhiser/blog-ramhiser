@@ -1,7 +1,6 @@
 ---
 title: "Building Scikit-Learn Pipelines With Pandas DataFrames"
 date: 2018-04-16T08:10:13-05:00
-draft: true
 categories:
 - Python
 - Pandas
