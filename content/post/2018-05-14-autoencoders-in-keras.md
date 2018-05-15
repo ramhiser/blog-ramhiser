@@ -713,5 +713,6 @@ plt.show()
 
 ![denoised images](https://user-images.githubusercontent.com/261183/40034786-25ccae68-57c4-11e8-80ee-93a467d45996.png)
 
-
 Fantastic, those images almost look like the originals.
+
+If you'd like a Jupyter Notebook version of this blog post, [go here](https://github.com/ramhiser/Keras-Tutorials/blob/master/notebooks/06_autoencoder.ipynb).
