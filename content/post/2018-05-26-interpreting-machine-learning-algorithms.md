@@ -13,6 +13,8 @@ I've had an open tab with an [overview piece on interpreting machine learning al
 
 > Most machine learning algorithms create nonlinear, non-monotonic response functions. This class of functions is the most difficult to interpret, as they can change in a positive and negative direction and at a varying rate for any change in an independent variable. Typically, the only standard interpretability measure these functions provide are relative variable importance measures.
 
+> Monotonicity constraints can turn difficult-to-interpret nonlinear, non-monotonic models into highly interpretable, and possibly regulator-approved, nonlinear, monotonic models.
+
 > Variable importance measures rarely give insight into even the average direction that a variable affects a response function. They simply state the magnitude of a variable's relationship with the response as compared to other variables used in the model.
 
 Also, this quote stood out to me more than the others. As data scientists and ML practitioners, we are trained to **trust** a model by understanding its implementation details and various holdout validation scores. But for most end-users, the bar is much higher.
