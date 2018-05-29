@@ -39,7 +39,7 @@ Now, to get started, let's install two Kubernetes CLI utilities:
 1. [Kubernetes Operations, `kops`](https://github.com/kubernetes/kops)
 2. [Kubernetes command-line tool, `kubectl`](https://kubernetes.io/docs/reference/kubectl/overview/)
 
-On Mac OS X, we'll use [`brew`](https://brew.sh/) to install . If you're on Linux, see the [official Kops installation guide](https://github.com/kubernetes/kops#installing).
+On Mac OS X, we'll use [`brew`](https://brew.sh/) to install. If you're on Linux, see the [official Kops installation guide](https://github.com/kubernetes/kops#installing).
 
 ```bash
 brew update && brew install kops kubectl
@@ -91,10 +91,6 @@ $ kops create cluster --node-count=2 --node-size=t2.medium --zones=us-east-1a --
 ```
 
 Now that we've generated a cluster configuration, we can edit its description before launching the instances. The config is loaded from `s3://ramhiser-kops-state-store`. You can change the editor used to edit the config by setting `$EDITOR` or `$KUBE_EDITOR`. For instance, in my `~/.bashrc`, I have `export KUBE_EDITOR=emacs`.
-
-```bash
-$ kops edit cluster
-```
 
 Time to build the cluster. This takes a few minutes to boot the EC2 instances and download the Kubernetes components.
 
