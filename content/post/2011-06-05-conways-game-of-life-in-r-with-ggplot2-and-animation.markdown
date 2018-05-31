@@ -97,5 +97,4 @@ saveVideo(lapply(grid_ggplot, print), video.name = "animation.mp4", clean = TRUE
 
 I uploaded the resulting video to YouTube for your viewing pleasure.
 
-**Update**: After migrating to Jekyll 2.0 on GitHub pages, Jekyll is run in **safe** mode, so 3rd-party plugins are disabled. This includes the **youtube** plugin I was using previously. Maybe one day I'll be able to add the video here via: `%youtube TkH9qwHLwxk%`
-
+{{< youtube TkH9qwHLwxk% >}}
