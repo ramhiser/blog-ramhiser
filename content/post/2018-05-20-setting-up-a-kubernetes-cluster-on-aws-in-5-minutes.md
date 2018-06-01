@@ -8,6 +8,8 @@ categories:
 comments: true
 ---
 
+**UPDATED (28 May 2018)**: I updated the guide below to include deploying the [Kubernetes Dashboard](https://github.com/kubernetes/dashboard).
+
 [Kubernetes](https://kubernetes.io/) is like magic. It is a system for working with containerized applications: deployment, scaling, management, service discovery, magic. Think Docker at scale with little hassle. Despite the power of Kubernetes though, I find the [official guide](https://github.com/kubernetes/kops/blob/master/docs/aws.md) for setting up Kubernetes on AWS a bit overwhelming, so I wrote a simpler version to get started.
 
 As a side note, AWS introduced a new serviced called [Amazon Elastic Container Service for Kubernetes](https://aws.amazon.com/eks/) -- EKS for short. But it's still in Preview mode.
@@ -123,7 +125,7 @@ ip-172-20-62-139.ec2.internal	node	True
 $ kops validate cluster
 Validating cluster ramhiser.k8s.local
 
-unexpected error during validation: error listing nodes: Get https://api-ramhiser-k8s-local-abcdef-1234567890.us-east-1.elb.amazonaws.com/api/v1/nodes: EOF
+unexpected error during validation: error listing nodes: Get https://api-ramhiser-k8s-local-71cb48-202595039.us-east-1.elb.amazonaws.com/api/v1/nodes: EOF
 ```
 
 Finally, you can see your Kubernetes nodes with `kubectl`:
@@ -135,6 +137,75 @@ ip-172-20-34-111.ec2.internal   Ready     node      2h        v1.9.3
 ip-172-20-40-24.ec2.internal    Ready     master    2h        v1.9.3
 ip-172-20-62-139.ec2.internal   Ready     node      2h        v1.9.3
 ```
+
+***
+
+# Kubernetes Dashboard
+
+Excellent. We have a working Kubernetes cluster deployed on AWS. At this point, we can deploy lots of things, such as [Dask and Jupyter](https://ramhiser.com/post/2018-05-28-adding-dask-and-jupyter-to-kubernetes-cluster/). For demonstration, we'll launch the [Kubernetes Dashboard](https://github.com/kubernetes/dashboard). Think UI instead of command line for managing Kubernetes clusters and applications.
+
+To get started, let's deploy the dashboard app.
+
+```bash
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+
+secret "kubernetes-dashboard-certs" created
+serviceaccount "kubernetes-dashboard" created
+role.rbac.authorization.k8s.io "kubernetes-dashboard-minimal" created
+rolebinding.rbac.authorization.k8s.io "kubernetes-dashboard-minimal" created
+deployment.apps "kubernetes-dashboard" created
+service "kubernetes-dashboard" created
+```
+
+You can see that various items were created, including the `kubernetes-dashboard` service and app.
+
+If the dashboard was created, how do we view it? Easy. Let's get the AWS hostname:
+
+```bash
+$ kubectl cluster-info
+
+Kubernetes master is running at https://api-ramhiser-k8s-local-71cb48-202595039.us-east-1.elb.amazonaws.com
+KubeDNS is running at https://api-ramhiser-k8s-local-71cb48-202595039.us-east-1.elb.amazonaws.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+```
+
+With this hostname, open your browser to `https://api-ramhiser-k8s-local-71cb48-202595039.us-east-1.elb.amazonaws.com/ui`. (You'll need to replace the hostname with yours).
+
+Alternatively, you can access the Dashboard UI via a proxy:
+
+```bash
+$ kubectl proxy
+
+Starting to serve on 127.0.0.1:8001
+```
+
+Then, open your browser to [http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/](http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/).
+
+At this point, you'll be prompted for a username and password.  
+
+![login prompt](https://user-images.githubusercontent.com/261183/40863562-f2fbebf2-65b5-11e8-8c45-8e292e304d58.png)
+
+The username is `admin`. To get the password at the CLI, type:
+
+```
+$ kops get secrets kube --type secret -oplaintext
+```
+
+After you log in, you'll see another prompt. 
+
+![token prompt](https://user-images.githubusercontent.com/261183/40863832-e35c076c-65b6-11e8-8140-fe3262b5c47f.png)
+
+
+Select **Token**. To get the **Token**, type:
+
+```bash
+kops get secrets admin --type secret -oplaintext
+```
+
+After typing in the token, you'll see the Dashboard!
+
+![dashboard](https://user-images.githubusercontent.com/261183/40864104-fc16c386-65b7-11e8-8f04-d0fc501932f6.png)
 
 ***
 
