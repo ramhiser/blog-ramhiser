@@ -12,6 +12,9 @@ comments: true
 
 In this post, we're going to set up [Dask](https://dask.pydata.org/) and [Jupyter](http://jupyter.org/) on a [Kubernetes](https://kubernetes.io/) cluster running on AWS. If you don't have a Kubernetes cluster running, I suggest you check out [the post I wrote on setting up a Kubernetes cluster on AWS](https://ramhiser.com/post/2018-05-20-setting-up-a-kubernetes-cluster-on-aws-in-5-minutes/).
 
+Before we begin, here's a YouTube video demonstrating how to add Dask and Jupyter to an existing Kubernetes Cluster following the instructions below:
+
+{{< youtube ayDstz50_44 >}}
 
 ***
 
