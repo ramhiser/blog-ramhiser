@@ -18,7 +18,7 @@ Before we begin, here's a YouTube video demonstrating how to set up a Kubernetes
 
 Anyway, let's get started.
 
-**UPDATED (28 May 2018)**: I updated the guide below to include deploying the [Kubernetes Dashboard](https://github.com/kubernetes/dashboard). I've also included a YouTube video illustrating the Dashboard installation.
+**UPDATED (28 May 2018)**: I updated the guide below to include deploying the [Kubernetes Dashboard](https://github.com/kubernetes/dashboard). I've also included [a YouTube video illustrating the Dashboard installation](https://youtu.be/xe9twgEs5O8).
 
 ***
 
@@ -147,6 +147,10 @@ ip-172-20-62-139.ec2.internal   Ready     node      2h        v1.9.3
 # Kubernetes Dashboard
 
 Excellent. We have a working Kubernetes cluster deployed on AWS. At this point, we can deploy lots of things, such as [Dask and Jupyter](https://ramhiser.com/post/2018-05-28-adding-dask-and-jupyter-to-kubernetes-cluster/). For demonstration, we'll launch the [Kubernetes Dashboard](https://github.com/kubernetes/dashboard). Think UI instead of command line for managing Kubernetes clusters and applications.
+
+Here's a YouTube video illustrating how to install the Kubernetes Dashboard:
+
+{{< youtube xe9twgEs5O8 >}}
 
 To get started, let's deploy the dashboard app.
 
