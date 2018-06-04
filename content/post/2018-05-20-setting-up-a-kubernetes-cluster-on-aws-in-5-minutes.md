@@ -8,13 +8,17 @@ categories:
 comments: true
 ---
 
-**UPDATED (28 May 2018)**: I updated the guide below to include deploying the [Kubernetes Dashboard](https://github.com/kubernetes/dashboard).
-
 [Kubernetes](https://kubernetes.io/) is like magic. It is a system for working with containerized applications: deployment, scaling, management, service discovery, magic. Think Docker at scale with little hassle. Despite the power of Kubernetes though, I find the [official guide](https://github.com/kubernetes/kops/blob/master/docs/aws.md) for setting up Kubernetes on AWS a bit overwhelming, so I wrote a simpler version to get started.
 
 As a side note, AWS introduced a new serviced called [Amazon Elastic Container Service for Kubernetes](https://aws.amazon.com/eks/) -- EKS for short. But it's still in Preview mode.
 
+Before we begin, here's a YouTube video demonstrating how to set up a Kubernetes Cluster on AWS following the instructions below:
+
+{{< youtube RZwb6hhZvqM_44 >}}
+
 Anyway, let's get started.
+
+**UPDATED (28 May 2018)**: I updated the guide below to include deploying the [Kubernetes Dashboard](https://github.com/kubernetes/dashboard). I've also included a YouTube video illustrating the Dashboard installation.
 
 ***
 
