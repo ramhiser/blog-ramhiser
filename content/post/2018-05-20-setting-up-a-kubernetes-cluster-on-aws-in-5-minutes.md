@@ -14,7 +14,7 @@ As a side note, AWS introduced a new serviced called [Amazon Elastic Container S
 
 Before we begin, here's a YouTube video demonstrating how to set up a Kubernetes Cluster on AWS following the instructions below:
 
-{{< youtube RZwb6hhZvqM_44 >}}
+{{< youtube RZwb6hhZvqM >}}
 
 Anyway, let's get started.
 
