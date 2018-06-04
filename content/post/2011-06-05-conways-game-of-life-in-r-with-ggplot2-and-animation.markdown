@@ -6,6 +6,10 @@ title: Conway's Game of Life in R with ggplot2 and animation
 url: /2011/06/05/conways-game-of-life-in-r-with-ggplot2-and-animation/
 ---
 
+Before we begin, here's a YouTube video demonstrating Conway's Game of Life in R:
+
+{{< youtube Nj7HA-tAqEA >}}
+
 In undergrad I had a computer science professor that piqued my interest in applied mathematics, beginning with [Conway's Game of Life](http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life). At first, the Game of Life (not the board game) appears to be quite simple — perhaps, too simple — but it has been widely explored and is useful for modeling systems over time. It has been forever since I wrote my first version of this in C++, and I happily report that there will be no nonsense here.
 
 The basic idea is to start with a grid of cells, where each cell is either a zero (dead) or a one (alive). We are interested in watching the population behavior over time to see if the population dies off, has some sort of equilibrium, etc. [John Conway](http://en.wikipedia.org/wiki/John_Horton_Conway) studied many possible ways to examine population behaviors and ultimately decided on the following rules, which we apply to each cell for the current tick (or generation).
@@ -94,7 +98,3 @@ game_grids <- game_of_life(size = 50, num_reps = 500, prob = c(0.1, 0.9))
 grid_ggplot <- lapply(game_grids, grid_to_ggplot)
 saveVideo(lapply(grid_ggplot, print), video.name = "animation.mp4", clean = TRUE, interval = 0.05)
 {{< / highlight >}}
-
-I uploaded the resulting video to YouTube for your viewing pleasure.
-
-{{< youtube Nj7HA-tAqEA >}}
