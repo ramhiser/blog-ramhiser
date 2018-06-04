@@ -8,7 +8,7 @@ url: /2011/06/05/conways-game-of-life-in-r-with-ggplot2-and-animation/
 
 Before we begin, here's a YouTube video demonstrating Conway's Game of Life in R:
 
-{{< youtube Nj7HA-tAqEA >}}
+{{< youtube tAeXvIa9iqQ >}}
 
 In undergrad I had a computer science professor that piqued my interest in applied mathematics, beginning with [Conway's Game of Life](http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life). At first, the Game of Life (not the board game) appears to be quite simple — perhaps, too simple — but it has been widely explored and is useful for modeling systems over time. It has been forever since I wrote my first version of this in C++, and I happily report that there will be no nonsense here.
 
