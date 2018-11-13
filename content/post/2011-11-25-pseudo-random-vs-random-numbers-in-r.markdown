@@ -28,26 +28,26 @@ library("plyr")
 library("pixmap")
 library("random")
 
-rand_bit_matrix <- function(num_rows = 500, num_cols = 500, max_n_random.org = 10000, 
+rand_bit_matrix <- function(num_rows = 500, num_cols = 500, max_n_random.org = 10000,
     seed = NULL) {
     # I have copied the following function directly from help('integer').
     is.wholenumber <- function(x, tol = .Machine$double.eps^0.5) {
         abs(x - round(x)) < tol
     }
-    
+
     # The number of bits to draw at 'random'.
     n <- num_rows * num_cols
     if (n <= 0 || !is.wholenumber(n)) {
         stop("The number of bits 'n' should be a natural number.")
     }
-    
+
     if (!is.null(seed)) {
         set.seed(seed)
     }
-    
+
     # Create a matrix of pseudo-random bits.
     bits_R <- replicate(n = num_cols, sample(c(0, 1), size = num_rows, replace = TRUE))
-    
+
     # Because random.org will only return a maximum of 10,000 numbers at a
     # time, we break this up into several calls.
     seq_n_random.org <- rep.int(x = max_n_random.org, times = n%/%max_n_random.org)
@@ -57,9 +57,9 @@ rand_bit_matrix <- function(num_rows = 500, num_cols = 500, max_n_random.org = 1
     bits_random.org <- lapply(seq_n_random.org, function(n) {
         try_default(randomNumbers(n = n, min = 0, max = 1, col = 1), NA)
     })
-    
+
     bits_random.org <- matrix(unlist(bits_random.org), nrow = num_rows, ncol = num_cols)
-    
+
     list(R = bits_R, random.org = bits_random.org)
 }
 
@@ -68,12 +68,11 @@ bit_mats <- rand_bit_matrix(num_rows = 500, num_cols = 500, seed = 42)
 with(bit_mats, plot(pixmapGrey(data = R, nrow = nrow(R), ncol = ncol(R)), main = "R"))
 {{< / highlight >}}
 
-![plot of chunk code](http://i.imgur.com/hZd2N.png) 
+![plot of chunk code](https://i.imgur.com/hZd2N.png)
 
 {{< highlight bash >}}
-with(bit_mats, plot(pixmapGrey(data = random.org, nrow = nrow(random.org), 
+with(bit_mats, plot(pixmapGrey(data = random.org, nrow = nrow(random.org),
     ncol = ncol(random.org)), main = "random.org"))
 {{< / highlight >}}
 
-![plot of chunk code](http://i.imgur.com/E59lB.png) 
-
+![plot of chunk code](https://i.imgur.com/E59lB.png)

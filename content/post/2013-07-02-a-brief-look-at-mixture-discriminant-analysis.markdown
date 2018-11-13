@@ -67,11 +67,11 @@ deviations from this assumption. Moreover, perhaps a more important investigatio
 would be to determine how well the MDA classifier performs as the feature
 dimension increases relative to the sample size.
 
-![LDA Decision Boundaries](http://i.imgur.com/LIQPL0u.png)
+![LDA Decision Boundaries](https://i.imgur.com/LIQPL0u.png)
 
-![QDA Decision Boundaries](http://i.imgur.com/GeyXCsf.png)
+![QDA Decision Boundaries](https://i.imgur.com/GeyXCsf.png)
 
-![MDA Decision Boundaries](http://i.imgur.com/lw0iBxe.png)
+![MDA Decision Boundaries](https://i.imgur.com/lw0iBxe.png)
 
 {{< highlight bash >}}
 library(MASS)
