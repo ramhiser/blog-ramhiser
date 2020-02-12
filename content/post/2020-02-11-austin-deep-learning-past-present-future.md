@@ -13,6 +13,8 @@ At the [last meetup](https://www.meetup.com/Austin-Deep-Learning/events/26751796
 
 {{< youtube o1r2QQXBVr8 >}}
 
+***
+
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQ4vAXhc9i5U6fYS09oSla2SUQUqvuKDBDhFWKX38TJpCm1UGOsA8K3PRPXExUuTdLrno0zcS7AgPT2/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 
