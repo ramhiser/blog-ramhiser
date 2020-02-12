@@ -32,7 +32,7 @@ Bias like this just can't happen! And that is exactly what researchers are worki
 
 ***
 
-### Panel Discussion
+## Panel Discussion
 
 The panel discussion was a lot of fun. This was the first time we had done something like this at the [meetup](https://www.meetup.com/Austin-Deep-Learning), and we will certainly be doing this again. Four folks graciously joined the panel. I MC'd the discussion. I'm the bearded dude in the hat on the right (stage left). It kinda looks like I'm staring at my phone during much of the conversation, which I am! I was staring at our list of questions:
 
